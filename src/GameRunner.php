@@ -1,5 +1,7 @@
 <?php
 
+namespace Trivia;
+
 include __DIR__.'/Game.php';
 $notAWinner;
   $aGame = new Game();
