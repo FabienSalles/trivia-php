@@ -9,12 +9,16 @@ $notAWinner;
   $aGame->add("Chet");
   $aGame->add("Pat");
   $aGame->add("Sue");
-  
 
+
+$minAnswerId = 0;
+$maxAnswerId = 9;
+$wrongAnswerId = 7;
 do {
-    $aGame->roll(rand(0, 5) + 1);
+    $dice = rand(0, 5) + 1;
+    $aGame->roll($dice);
 
-    if (rand(0, 9) == 7) {
+    if (rand($minAnswerId, $maxAnswerId) == $wrongAnswerId) {
         $notAWinner = $aGame->wrongAnswer();
     } else {
         $notAWinner = $aGame->wasCorrectlyAnswered();
