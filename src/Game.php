@@ -38,7 +38,8 @@ class Game
         }
     }
 
-    function isPlayable() {
+    function isPlayable()
+    {
         $minimumNumberOfPlayers = 2;
         return ($this->howManyPlayers() >= $minimumNumberOfPlayers);
     }
@@ -108,7 +109,8 @@ class Game
         }
     }
 
-    function currentCategory() {
+    function currentCategory()
+    {
         $popCategory = "Pop";
         $scienceCategory = "Science";
         $sportCategory = "Sports";

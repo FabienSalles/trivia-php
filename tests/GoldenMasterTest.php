@@ -14,7 +14,8 @@ class GoldenMasterTest extends TestCase
 {
     protected $gmPath;
 
-    function setUp() {
+    function setUp()
+    {
         $this->gmPath = __DIR__ . '/gm.txt';
     }
 
@@ -24,7 +25,8 @@ class GoldenMasterTest extends TestCase
 //        $this->generateMany($times, $this->gmPath);
 //    }
 
-    function testOutputMatchesGoldenMaster() {
+    function testOutputMatchesGoldenMaster()
+    {
         $times = 20000;
         $actualPath = '/tmp/actual.txt';
         $this->generateMany($times, $actualPath);
@@ -33,7 +35,8 @@ class GoldenMasterTest extends TestCase
         $this->assertTrue($file_content_gm == $file_content_actual);
     }
 
-    private function generateMany($times, $fileName) {
+    private function generateMany($times, $fileName)
+    {
         $first = true;
         while ($times) {
             if ($first) {
@@ -46,7 +49,8 @@ class GoldenMasterTest extends TestCase
         }
     }
 
-    private function generateOutput($seed) {
+    private function generateOutput($seed)
+    {
         ob_start();
         srand($seed);
         require __DIR__ . '/../src/GameRunner.php';
