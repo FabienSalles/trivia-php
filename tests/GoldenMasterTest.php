@@ -12,13 +12,25 @@ use PHPUnit\Framework\TestCase;
 
 class GoldenMasterTest extends TestCase
 {
-    function testGenerateOutput() {
+    protected $gmPath;
+
+    function setUp() {
+        $this->gmPath = __DIR__ . '/gm.txt';
+    }
+
+//    function testGenerateOutput() {
+//        $this->markTestSkipped();
+//        $times = 20000;
+//        $this->generateMany($times, $this->gmPath);
+//    }
+
+    function testOutputMatchesGoldenMaster() {
         $times = 20000;
-        $this->generateMany($times, '/tmp/gm.txt');
-        $this->generateMany($times, '/tmp/gm2.txt');
-        $file_content_gm = file_get_contents('/tmp/gm.txt');
-        $file_content_gm2 = file_get_contents('/tmp/gm2.txt');
-        $this->assertEquals($file_content_gm, $file_content_gm2);
+        $actualPath = '/tmp/actual.txt';
+        $this->generateMany($times, $actualPath);
+        $file_content_gm = file_get_contents($this->gmPath);
+        $file_content_actual = file_get_contents($actualPath);
+        $this->assertTrue($file_content_gm == $file_content_actual);
     }
 
     private function generateMany($times, $fileName) {
